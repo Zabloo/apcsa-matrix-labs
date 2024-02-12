@@ -10,13 +10,13 @@ public class Solutions {
         int[][] matrix = new int[][] {{6, 4, 2}, {1, -2, 8}, {1, 5, 7}};
         printMatrix(matrix);
         try {
-            System.out.println(determinant(matrix));
+            System.out.println("Determinant: " + determinant(matrix));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         // int[][] m = new int[][] {{2, -3}, {5, 10}};
-        // printMatrix();
+        //  printMatrix(m);
     }
 
 
@@ -51,6 +51,7 @@ public class Solutions {
                     cutMatrix[colM - 1][rowM] = input[colM][rowM];
                 }
             }
+            System.out.println("\n\n\n");
             printMatrix(cutMatrix); // this line causes it to spam newlines, comment out to stop the bug
             result += mult * determinant(scale(cutMatrix, elem));
             mult *= -1;
@@ -61,10 +62,7 @@ public class Solutions {
     public static void printMatrix(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix[0].length; col++) {
-                System.out.print(matrix[col][row]);
-                for (int a = 0; a < 10 - Math.floor(Math.log10(Math.abs(matrix[col][row]))) - 1; a++)
-                    System.out.print(" ");
-                if (matrix[col][row] >= 0) System.out.print(" ");
+                System.out.print(matrix[col][row] + " ");
             }
             System.out.println();
         }
