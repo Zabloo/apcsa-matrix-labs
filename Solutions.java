@@ -1,6 +1,5 @@
 public class Solutions {
     public static void main(String[] args) {
-        System.out.println("yes");
     /*
         int[][] arr = new int[][] {{1, 2, 3}, {2, 13, 1}, {6, 5, 100}};
         int[][] newArr = scale(arr, 3);
