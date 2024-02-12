@@ -7,6 +7,7 @@ public class Solutions {
         printMatrix(newArr);
         */
         // System.out.println(10 - Math.floor(Math.log10(5)));
+        // int[][] matrix = new int[][] {{6, 4, 2}, {1, -2, 8}, {1, 5, 7}};
         int[][] matrix = new int[][] {{6, 4, 2}, {1, -2, 8}, {1, 5, 7}};
         printMatrix(matrix);
         try {
@@ -14,9 +15,6 @@ public class Solutions {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // int[][] m = new int[][] {{2, -3}, {5, 10}};
-        //  printMatrix(m);
     }
 
 
@@ -42,18 +40,16 @@ public class Solutions {
             int[][] cutMatrix = new int[input.length - 1][input.length - 1];
             int colM;
             for (colM = 0; colM < col; colM++) { // before selected element
-                for (int rowM = 1; rowM < cutMatrix.length; rowM++) {
-                    cutMatrix[colM][rowM] = input[colM][rowM];
+                for (int rowM = 1; rowM <= cutMatrix.length; rowM++) {
+                    cutMatrix[colM][rowM - 1] = input[colM][rowM];
                 }
             }
             for (colM = colM + 1; colM < input.length; colM++) { // after selected element
-                for (int rowM = 1; rowM < cutMatrix.length; rowM++) {
-                    cutMatrix[colM - 1][rowM] = input[colM][rowM];
+                for (int rowM = 1; rowM <= cutMatrix.length; rowM++) {
+                    cutMatrix[colM - 1][rowM - 1] = input[colM][rowM];
                 }
             }
-            System.out.println("\n\n\n");
-            printMatrix(cutMatrix); // this line causes it to spam newlines, comment out to stop the bug
-            result += mult * determinant(scale(cutMatrix, elem));
+            result += mult * elem * determinant(cutMatrix);
             mult *= -1;
         }
         return result;
